@@ -1,15 +1,19 @@
 package nl.miwgroningen.se.ch9.advanced.vincent.libraryDemo.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
  * <p>
  * Dit is wat het programma doet.
  */
-@Entity
+@Entity @Getter @Setter
 public class Book {
     @Id
     @GeneratedValue
@@ -17,28 +21,4 @@ public class Book {
 
     private String title;
     private String author;
-
-    public void setBookId(Long bookId) {
-        this.bookId = bookId;
-    }
-
-    public Long getBookId() {
-        return bookId;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 }
