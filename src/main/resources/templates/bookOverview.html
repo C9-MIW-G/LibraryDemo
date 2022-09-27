@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Overzicht van de boeken</title>
-    <link rel="stylesheet" type="text/css" href="css/library.css">
+    <link rel="stylesheet" type="text/css" href="/css/library.css">
 </head>
 <body>
 <h1>Overzicht van de boeken</h1>
@@ -23,6 +23,8 @@
         <td th:text="${book.author}"></td>
     </tr>
 </table>
+
+<a th:href="@{/book/new}">Maak een nieuw boek aan</a>
 
 </body>
 </html>
