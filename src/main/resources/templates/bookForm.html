@@ -10,6 +10,7 @@
 <h1>Maak een nieuw boek</h1>
 
 <form th:action="@{/book/new}" method="post" th:object="${book}">
+    <input type="hidden" th:field="*{bookId}"/>
     <table>
         <tr>
             <td>Titel</td>
