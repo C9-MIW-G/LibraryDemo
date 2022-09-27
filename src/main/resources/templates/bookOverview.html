@@ -13,14 +13,14 @@
 
 <table>
     <tr>
-        <th>Id</th>
         <th>Titel</th>
         <th>Auteur</th>
+        <th></th>
     </tr>
     <tr th:each="book : ${allBooks}">
-        <td th:text="${book.bookId}"></td>
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
+        <td><a th:href="@{/book/update/{title}(title=${book.title})}">Edit</a></td>
     </tr>
 </table>
 

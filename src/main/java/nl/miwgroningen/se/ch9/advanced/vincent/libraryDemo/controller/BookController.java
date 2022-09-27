@@ -38,9 +38,9 @@ public class BookController {
         return "bookForm";
     }
 
-    @GetMapping("/book/update/{bookId}")
-    protected String showUpdateBookForm(@PathVariable("bookId") Long bookId, Model model) {
-        Optional<Book> book = bookRepository.findById(bookId);
+    @GetMapping("/book/update/{bookTitle}")
+    protected String showUpdateBookForm(@PathVariable("bookTitle") String bookTitle, Model model) {
+        Optional<Book> book = bookRepository.findByTitle(bookTitle);
 
         if (book.isEmpty()) {
             return "redirect:/book/overview";
