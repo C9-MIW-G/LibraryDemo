@@ -17,6 +17,7 @@ import java.util.Optional;
  * <p>
  * Dit is wat het programma doet.
  */
+@SuppressWarnings("SameReturnValue")
 @Controller
 public class BookController {
 

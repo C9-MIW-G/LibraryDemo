@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Overzicht van de boeken</title>
@@ -15,12 +15,16 @@
     <tr>
         <th>Titel</th>
         <th>Auteur</th>
+        <th>Aantal</th>
+        <th></th>
         <th></th>
     </tr>
     <tr th:each="book : ${allBooks}">
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
+        <td th:text="${book.numberOfAvailableCopies}"></td>
         <td><a th:href="@{/book/update/{title}(title=${book.title})}">Edit</a></td>
+        <td><a th:href="@{/copy/new/{bookId}(bookId=${book.bookId})}">Koop</a></td>
     </tr>
 </table>
 
