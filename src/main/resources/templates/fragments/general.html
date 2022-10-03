@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:fragment="baseHeader(title)">
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Dit is een algemene titel</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" href="/css/library.css">
+</head>
+<body>
+<div th:fragment="navbar"> <!-- Navigation bar -->
+    <ul class="nav justify-content-evenly">
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/author/overview}">Auteurs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/book/overview}">Boeken</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/book/new}">Nieuw boek</a>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+    <h1>Overzicht van de boeken</h1>
+    <p>
+        Hieronder volgt een overzicht van alle boeken die aangeboden worden in deze bibliotheek.
+    </p>
+
+    <table>
+        <tr>
+            <th>Titel</th>
+            <th>Auteurs</th>
+            <th>Aantal</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="book : ${allBooks}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.authorDisplayNames}"></td>
+            <td th:text="${book.numberOfAvailableCopies}"></td>
+            <td><a th:href="@{/book/update/{title}(title=${book.title})}">Edit</a></td>
+            <td><a th:href="@{/copy/new/{bookId}(bookId=${book.bookId})}">Koop</a></td>
+        </tr>
+    </table>
+
+    <a th:href="@{/book/new}">Maak een nieuw boek aan</a>
+</div>
+<div th:fragment="footer">
+    <footer><p class="text-center text text-muted">Copyright Vincent Velthuizen &copy;2022</p></footer>
+</div>
+<div th:fragment="bottomScripts">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</div>
+
+</body>
+</html>

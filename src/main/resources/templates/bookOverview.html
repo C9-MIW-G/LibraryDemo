@@ -1,34 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
+<head th:replace="fragments/general :: baseHeader(~{:: title})">
     <title>Overzicht van de boeken</title>
-    <link rel="stylesheet" type="text/css" href="/css/library.css">
 </head>
+
 <body>
-<h1>Overzicht van de boeken</h1>
-<p>
-    Hieronder volgt een overzicht van alle boeken die aangeboden worden in deze bibliotheek.
-</p>
+<div th:replace="fragments/general :: navbar"></div>
 
-<table>
-    <tr>
-        <th>Titel</th>
-        <th>Auteurs</th>
-        <th>Aantal</th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr th:each="book : ${allBooks}">
-        <td th:text="${book.title}"></td>
-        <td th:text="${book.authorDisplayNames}"></td>
-        <td th:text="${book.numberOfAvailableCopies}"></td>
-        <td><a th:href="@{/book/update/{title}(title=${book.title})}">Edit</a></td>
-        <td><a th:href="@{/copy/new/{bookId}(bookId=${book.bookId})}">Koop</a></td>
-    </tr>
-</table>
+<div class="container">
+    <h1>Overzicht van de boeken</h1>
+    <p>
+        Hieronder volgt een overzicht van alle boeken die aangeboden worden in deze bibliotheek.
+    </p>
 
-<a th:href="@{/book/new}">Maak een nieuw boek aan</a>
+    <table>
+        <tr>
+            <th>Titel</th>
+            <th>Auteurs</th>
+            <th>Aantal</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="book : ${allBooks}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.authorDisplayNames}"></td>
+            <td th:text="${book.numberOfAvailableCopies}"></td>
+            <td><a th:href="@{/book/update/{title}(title=${book.title})}">Edit</a></td>
+            <td><a th:href="@{/copy/new/{bookId}(bookId=${book.bookId})}">Koop</a></td>
+        </tr>
+    </table>
 
+    <a th:href="@{/book/new}">Maak een nieuw boek aan</a>
+</div>
+
+<div th:replace="fragments/general :: footer"></div>
+<div th:replace="fragments/general :: bottomScripts"></div>
 </body>
 </html>
