@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,7 +25,7 @@ public class Book {
     private String title;
 
     @ManyToMany
-    private Set<Author> authors;
+    private Set<Author> authors = new HashSet<>();
 
     @OneToMany(mappedBy = "book")
     private List<Copy> copies;
