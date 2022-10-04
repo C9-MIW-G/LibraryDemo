@@ -41,4 +41,15 @@ public class CopyController {
         return "redirect:/book/overview";
     }
 
+    @GetMapping("/delete/{copyId}")
+    protected String deleteCopy(@PathVariable("copyId") Long copyId) {
+        Optional<Copy> copy = copyRepository.findById(copyId);
+
+        if (copy.isEmpty()) {
+            return "redirect:/book/overview";
+        } else {
+            copyRepository.delete(copy.get());
+            return String.format("redirect:/book/id/%d", copy.get().getBook().getBookId());
+        }
+    }
 }

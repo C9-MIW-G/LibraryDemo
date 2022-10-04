@@ -18,6 +18,13 @@
     </li>
   </ul>
 
+  <ul>
+    <li th:each="copy : ${book.copies}">
+      <span th:text="${copy.copyId}"></span>
+      <a th:href="@{/copy/delete/{copyId}(copyId=${copy.copyId})}">Gooi weg</a>
+    </li>
+  </ul>
+
   <a th:href="@{/book/update/{bookTitle}(bookTitle=${book.title})}">Edit</a>
 </div>
 
