@@ -32,7 +32,7 @@ public class LibraryDemoKickstarter implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         if (libraryUserRepository.findByUsername("admin").isEmpty()) {
             // create default admin
             LibraryUser admin = new LibraryUser();
@@ -40,17 +40,17 @@ public class LibraryDemoKickstarter implements CommandLineRunner {
             admin.setPassword(passwordEncoder.encode("changeThisNow"));
             libraryUserRepository.save(admin);
 
-//            // create author
-//            Author patrick = new Author();
-//            patrick.setFirstName("Patrick");
-//            patrick.setLastName("Rothfuss");
-//            authorRepository.save(patrick);
-//
-//            // create book
-//            Book book = new Book();
-//            book.setTitle("The Name of the Wind");
-//            book.getAuthors().add(patrick);
-//            bookRepository.save(book);
+            // create author
+            Author patrick = new Author();
+            patrick.setFirstName("Patrick");
+            patrick.setLastName("Rothfuss");
+            authorRepository.save(patrick);
+
+            // create book
+            Book book = new Book();
+            book.setTitle("The Name of the Wind");
+            book.getAuthors().add(patrick);
+            bookRepository.save(book);
         }
     }
 }

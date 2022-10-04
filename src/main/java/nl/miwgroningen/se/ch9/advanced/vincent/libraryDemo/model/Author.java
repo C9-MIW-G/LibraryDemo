@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -24,7 +23,7 @@ public class Author {
     private Long authorId;
 
     private String firstName;
-    private String infixName;
+    private String infixName = "";
     private String lastName;
 
     @ManyToMany(mappedBy = "authors")
