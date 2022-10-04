@@ -8,27 +8,20 @@
 <div th:replace="fragments/general :: navbar"></div>
 
 <div class="container">
-<h1>Maak een nieuw boek</h1>
+    <h1>Maak een nieuw boek</h1>
+    <form th:action="@{/book/new}" method="post" th:object="${book}">
+        <input type="hidden" th:field="*{bookId}">
 
-<form th:action="@{/book/new}" method="post" th:object="${book}">
-    <input type="hidden" th:field="*{bookId}"/>
-    <table>
-        <tr>
-            <td>Titel</td>
-            <td><input type="text" th:field="*{title}" /></td>
-        </tr>
-        <tr>
-            <td>Auteur</td>
-            <td>
-                <select th:field="*{authors}" multiple>
-                    <option th:each="author : ${allAuthors}" th:value="${author.authorId}" th:text="${author.displayName}"></option>
-                </select>
-            </td>
-        </tr>
-    </table>
-    <input type="reset" value="Reset">
-    <input type="submit" value="Sla boek op" />
-</form>
+        <label for="title" class="form-label">Titel</label>
+        <input type="text" class="form-control" id="title" th:field="*{title}">
+
+        <label for="authors" class="form-label">Auteurs</label>
+        <select id="authors" class="form-control" th:field="*{authors}" multiple>
+            <option th:each="author : ${allAuthors}" th:value="${author.authorId}" th:text="${author.displayName}"></option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Sla boek op</button>
+    </form>
 </div>
 
 <div th:replace="fragments/general :: footer"></div>

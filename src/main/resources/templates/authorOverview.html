@@ -8,28 +8,32 @@
 <div th:replace="fragments/general :: navbar"></div>
 
 <div class="container">
-<table>
-  <tr>
-    <th>Voornaam</th>
-    <th>Tussenvoegsel</th>
-    <th>Achternaam</th>
-    <th># Boeken</th>
-  </tr>
-
-  <tr th:each="author : ${allAuthors}">
-    <td th:text="${author.firstName}"></td>
-    <td th:text="${author.infixName}"></td>
-    <td th:text="${author.lastName}"></td>
-    <td th:text="${author.authoredBooks.size()}"></td>
-  </tr>
-
-  <form th:action="@{/author/new}" method="post" th:object="${newAuthor}">
+<table class="table table-striped">
+  <thead>
     <tr>
-      <td><input type="text" th:field="*{firstName}"></td>
-      <td><input type="text" th:field="*{infixName}"></td>
-      <td><input type="text" th:field="*{lastName}"> <input type="submit" value="Sla op"></td>
+      <th>Voornaam</th>
+      <th>Tussenvoegsel</th>
+      <th>Achternaam</th>
+      <th># Boeken</th>
     </tr>
-  </form>
+  </thead>
+  <tbody>
+    <tr th:each="author : ${allAuthors}">
+      <td th:text="${author.firstName}"></td>
+      <td th:text="${author.infixName}"></td>
+      <td th:text="${author.lastName}"></td>
+      <td th:text="${author.authoredBooks.size()}"></td>
+    </tr>
+
+    <form th:action="@{/author/new}" method="post" th:object="${newAuthor}">
+      <tr>
+        <td><input type="text" th:field="*{firstName}"></td>
+        <td><input type="text" th:field="*{infixName}"></td>
+        <td><input type="text" th:field="*{lastName}"></td>
+        <td><input type="submit" value="Sla op"></td>
+      </tr>
+    </form>
+  </tbody>
 </table>
 </div>
 

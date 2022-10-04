@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
@@ -39,10 +40,6 @@ public class Book {
     }
 
     public String getAuthorDisplayNames() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Author author : authors) {
-            stringBuilder.append(author.getDisplayName()).append(", ");
-        }
-        return stringBuilder.toString();
+        return authors.stream().map(Author::getDisplayName).collect(Collectors.joining(", "));
     }
 }
