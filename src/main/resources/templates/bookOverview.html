@@ -13,26 +13,28 @@
         Hieronder volgt een overzicht van alle boeken die aangeboden worden in deze bibliotheek.
     </p>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Titel</th>
-                <th>Auteurs</th>
-                <th>Aantal</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="book : ${allBooks}">
-                <td th:text="${book.title}"></td>
-                <td th:text="${book.authorDisplayNames}"></td>
-                <td th:text="${book.numberOfAvailableCopies}"></td>
-                <td><a th:href="@{/book/update/{title}(title=${book.title})}">Edit</a></td>
-                <td><a th:href="@{/copy/new/{bookId}(bookId=${book.bookId})}">Koop</a></td>
-            </tr>
-        </tbody>
-    </table>
+    <div th:fragment="bookTable">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titel</th>
+                    <th>Auteurs</th>
+                    <th>Aantal</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book : ${allBooks}">
+                    <td><a th:href="@{/book/title/{bookTitle}(bookTitle=${book.title})}" th:text="${book.title}"></a></td>
+                    <td th:text="${book.authorDisplayNames}"></td>
+                    <td th:text="${book.numberOfAvailableCopies}"></td>
+                    <td><a th:href="@{/book/update/{title}(title=${book.title})}">Edit</a></td>
+                    <td><a th:href="@{/copy/new/{bookId}(bookId=${book.bookId})}">Koop</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div sec:authorize="isAuthenticated()">
         <a th:href="@{/book/new}">Maak een nieuw boek aan</a>

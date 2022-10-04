@@ -8,6 +8,19 @@
 <div th:replace="fragments/general :: navbar"></div>
 
 <div class="container">
+    <form th:action="@{/user/new}" method="post" th:object="${user}">
+        <div>
+            <label for="username" class="form-label">Gebruikersnaam:</label>
+            <input type="text" id="username" class="form-control" th:field="*{username}">
+        </div>
+        <div>
+            <label for="password" class="form-label">Wachtwoord:</label>
+            <input type="password" id="password" class="form-control" th:field="*{password}">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Sla gebruiker op</button>
+        </div>
+    </form>
 </div>
 
 <div th:replace="fragments/general :: footer"></div>
